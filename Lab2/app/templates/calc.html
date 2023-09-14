@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="POST">
+    <input name="operand1" type="text" value="{{request.form.get('operand1')}}">
+    {% set operator = request.form.get('operator') %}
+    <select name="operator">
+        <option {%if operator == "+" %} selected {% endif %}>+</option>
+        <option {%if operator == "-" %} selected {% endif %}>-</option>
+        <option {%if operator == "*" %} selected {% endif %}>*</option>
+        <option {%if operator == "/" %} selected {% endif %}>/</option>
+    </select>
+    <input name="operand2" type="text" value="{{request.form.get('operand2')}}">
+    <button name="submit">=</button>
+    <input name="res" type="text" disabled value="{{res or ''}}">
+</form>
+{% if errormsg %}<p style="color: red;">{{errormsg}}</p>{% endif %}
+{% endblock %}
+

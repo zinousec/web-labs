@@ -1,0 +1,27 @@
+<div class="comment row py-2">
+    <div class="col-md-1 mb-3">
+        <img class="rounded-circle avatar" src="{{ url_for('static', filename='images/avatar-for-comment.png') }}">
+    </div>
+    <div class="col-md-11 mb-3">
+        <div class="fs-6">{{ comment.author }}</div>
+        <div class="text-justify fs-5">{{ comment.text }}</div>
+    </div>
+    <div class="row justify-content-end">
+        {% for replie in comment.replies %}
+        <div class="row justify-content-end">
+            <div class="col-md-11 mb-3">
+                <div class="comment row py-2">
+                    <div class="col-md-1 mb-3">
+                        <img class="rounded-circle avatar"
+                            src="{{ url_for('static', filename='images/avatar-for-comment.png') }}">
+                    </div>
+                    <div class="col-md-11 mb-3">
+                        <div class="fs-6">{{ replie.author }}</div>
+                        <div class="text-justify fs-5">{{ replie.text }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

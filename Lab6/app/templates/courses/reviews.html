@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% from "pagination_for_reviews.html" import pagination_for_reviews %}
+
+{% block content %}
+<h1 class="text-center py-3">Отзывы по курсу {{ course.name }}</h1>
+<div class="d-flex flex-row justify-content-center">
+    <form class="d-flex flex-row justify-content-center" method="post">
+        <select class="form-select my-2" name="sort">
+            <option value="1" {% if sort_type == "1" %}selected{% endif %}>Сортировка по новизне</option>
+            <option value="2" {% if sort_type == "2" %}selected{% endif %}>Сначала положительные</option>
+            <option value="3" {% if sort_type == "3" %}selected{% endif %}>Сначала отрицательные</option>
+          </select>
+        <button type="submit" class="btn btn-primary m-2">Сортировать</button>
+      </form>
+</div>
+{% for review in reviews %}
+<div class="container border-review my-2">
+    <div class="d-flex flex-row mb-3">
+        <div class="px-2">{{ review.get_name_user }}</div>
+        <div class="px-3">{{ review.rating }}★</div>
+        <div class="ms-auto px-2">{{ review.created_at }}</div>
+    </div>
+    <hr/>
+    <div class="mx-2">
+        {{ review.text }}
+    </div>
+</div>
+{% endfor %}
+
+{{ pagination_for_reviews(page, page_count, request.endpoint, course.id, sort_type) }}
+
+{% endblock %}

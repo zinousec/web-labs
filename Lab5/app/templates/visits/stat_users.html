@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+<!-- {% from "pagination.html" import pagination %} -->
+
+{% block content %}
+
+<h1>Журнал посещений по пользователям</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>№</th>
+            <th>Пользователь</th>
+            <th>Количество посещений</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for stat in stats %}
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>{{stat.last_name or 'Неаутентифицированный пользователь'}} {{stat.first_name or ''}} {{stat.middle_name or ''}}</td>
+            <td>{{stat.count}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Экспорт!!! -->
+<a class="btn btn-primary" href="{{ url_for('visits.stat_users', download_csv=True) }}">Экспорт в CSV</a>
+
+
+{% endblock %}

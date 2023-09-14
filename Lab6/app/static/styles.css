@@ -1,0 +1,56 @@
+.logo {
+    max-width: 175px;
+}
+
+.profile {
+    max-width: 45px;
+}
+
+.background-preview {
+    border: 3px dashed grey;
+    flex-grow: 1;
+}
+
+.title-area {
+    background-color: black;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    font-size: 1.5rem;
+    min-height: calc(75vh);
+}
+
+.courses-list .row:hover {
+    cursor: pointer;
+    border: 1px solid black !important;
+}
+
+.course-logo {
+    min-width: 170px;
+    width: 100%;
+    height: 170px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.border-review {
+    border: 1.2px solid black;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.border-error {
+    border: 1.2px solid #dc3545;
+    border-radius: 10px;
+    margin: 15px 0;
+    padding: 2px;
+}
+
+.text-error {
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: .875em;
+    color: #dc3545;
+}

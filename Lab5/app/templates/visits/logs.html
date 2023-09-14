@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% from "pagination.html" import pagination %}
+
+{% block content %}
+
+<h1>Журнал посещений</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>№</th>
+            <th>Путь до страницы</th>
+            <th>пользователь</th>
+            <th>Дата</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for log in logs %}
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>{{log.path}}</td>
+            <td>{% if log.login %}
+                {{log.login}}
+                {% else %} 
+                Анонимный пользователь
+                {% endif %}</td>
+            <td>{{log.created_at}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{{pagination(page, page_count, request.endpoint)}}
+
+{% if current_user.can("show_stat", user) %}
+<a class="btn btn-primary" href="{{ url_for('visits.stat') }}">Статистика посещений по разделам сайта</a>
+<a class="btn btn-primary" href="{{ url_for('visits.stat_users') }}">Статистика посещений по пользователям</a>
+{% endif %}
+
+{% endblock %}

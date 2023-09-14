@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<h1 class="my-5">{{ title }}</h1>
+<div class="row mb-3">
+    <div class="description fs-5">{{ post.author }}, {{ post.date.strftime('%d.%m.%Y') }}</div>
+    <img class="img-post my-3 mx-auto" src="{{ url_for('static', filename='images/' + post.image_id) }}"
+        alt="Card image cap">
+    <div class="text-justify">
+        {{ post.text }}
+    </div>
+
+
+    <div class="comments py-5">
+        <section class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div>
+                        <textarea class="form-control" rows="2" placeholder="Добавьте Ваш комментарий"></textarea>
+                        <button class="btn btn-sm btn-primary pull-right my-2 float-end" type="submit"><i
+                                class="fa fa-pencil fa-fw"></i> Добавить</button>
+                    </div>
+                </div>
+            </div>
+
+            {% for comment in post.comments %}
+            {% include  'comment.html' %}
+            {% endfor %}
+
+        </section>
+    </div>
+
+
+</div>
+{% endblock %}

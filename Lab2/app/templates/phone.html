@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="POST">
+    <label for="n_phone" class="form-label">Введите номер телефона:</label>
+    <input name="n_phone" id="n_phone" type="text" value="{{request.form.get('n_phone') or ''}}">
+    <button name="submit">Проверить</button>
+</form>
+
+{% for error in errormsg %}
+<p style="color: red;">{{ error }}</p>
+{% endfor %}
+{% if true_phone %}<p style="color: green;">Номер телефона введен верно</p>{% endif %}
+
+{% endblock %}

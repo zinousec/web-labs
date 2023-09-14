@@ -1,0 +1,20 @@
+body {
+    font-size: 1.25rem;
+}
+
+.avatar {
+    max-width: 100%;
+}
+
+.img-post {
+    width: 50%;
+    height: 50%;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.height-full {
+    height: 100%;
+}
